@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "797298911468",
+    "firebase_url": "https://sid-d5a-2023-default-rtdb.firebaseio.com",
+    "project_id": "sid-d5a-2023",
+    "storage_bucket": "sid-d5a-2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797298911468:android:de49afcc1d124df04addc9",
+        "android_client_info": {
+          "package_name": "com.deceptibot.SID5A"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797298911468-d4laujf99asgnbr5eejcgmmhjo01ul6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQuQ5a2TVlw3NxtssyfEGtypqWND6Me2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797298911468-d4laujf99asgnbr5eejcgmmhjo01ul6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
