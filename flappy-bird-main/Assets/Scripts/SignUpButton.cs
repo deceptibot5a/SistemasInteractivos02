@@ -1,4 +1,5 @@
 using Firebase.Auth;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,29 +14,30 @@ public class SignUpButton : MonoBehaviour
     private void Reset() {
         _signUpButton = GetComponent<Button>();
     }
+
     void Start() {
-        _signUpButton.onClick.AddListener(HandleRegistrationButtonClicked);  
+        _signUpButton.onClick.AddListener(HandleRegistrationButtonClicked);
     }
+
     private void HandleRegistrationButtonClicked() {
-        string email = GameObject.Find("InputEmail").GetComponent<TMP_InputField>().text;
-        string password = GameObject.Find("InputPassword").GetComponent<TMP_InputField>().text;
+        Debug.Log("Click");
+        string email = GameObject.Find("InputEmail").GetComponent<InputField>().text;
+        string password = GameObject.Find("InputPassword").GetComponent<InputField>().text;
 
         _signUpCoroutine = StartCoroutine(SignUpUser(email, password));
     }
+
     private IEnumerator SignUpUser(string email, string password) {
         var auth = FirebaseAuth.DefaultInstance;
-        var registerTask = auth.CreateUserWithEmailAndPasswordAsync(email, password);
+        var registarTask = auth.CreateUserWithEmailAndPasswordAsync(email, password);
 
-        yield return new WaitUntil(() => registerTask.IsCompleted);
+        yield return new WaitUntil(() => registarTask.IsCompleted);
 
-        if (registerTask.Exception != null) {
-            Debug.LogWarning($"Failed to register task {registerTask.Exception}");
+        if (registarTask.Exception != null) {
+            Debug.LogWarning($"Failed to register task {registarTask.Exception}");
         } else {
-            Debug.Log($"Succesfully registered user {registerTask.Result.Email}");
-            //Registrar los datos del usuario en el database
+            Debug.Log($"Succesfully registered user {registarTask.Result.Email}");
+            //Registrar los datos adicionale del usaurio en Database
         }
-    }
-    void Update() {
-        
     }
 }
