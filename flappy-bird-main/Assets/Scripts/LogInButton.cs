@@ -5,19 +5,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class LogInButton : MonoBehaviour
 {
     [SerializeField] private Button _loginButton;
-    [SerializeField] private InputField _emailInputField;
-    [SerializeField] private InputField _emailPasswordField;
+    [SerializeField] private TMP_InputField _emailInputField;
+    [SerializeField] private TMP_InputField _emailPasswordField;
 
     private Coroutine _loginCoroutine;
 
     void Reset() {
         _loginButton = GetComponent<Button>();
-        _emailInputField = GameObject.Find("InputEmail").GetComponent<InputField>();
-        _emailPasswordField = GameObject.Find("InputPassword").GetComponent<InputField>();
+        _emailInputField = GameObject.Find("InputEmail").GetComponent<TMP_InputField>();
+        _emailPasswordField = GameObject.Find("InputPassword").GetComponent<TMP_InputField>();
     }
 
     void Start() {

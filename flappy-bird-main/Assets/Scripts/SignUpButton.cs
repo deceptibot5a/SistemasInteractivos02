@@ -21,8 +21,8 @@ public class SignUpButton : MonoBehaviour
 
     private void HandleRegistrationButtonClicked() {
         Debug.Log("Click");
-        string email = GameObject.Find("InputEmail").GetComponent<InputField>().text;
-        string password = GameObject.Find("InputPassword").GetComponent<InputField>().text;
+        string email = GameObject.Find("InputEmail").GetComponent<TMP_InputField>().text;
+        string password = GameObject.Find("InputPassword").GetComponent<TMP_InputField>().text;
 
         _signUpCoroutine = StartCoroutine(SignUpUser(email, password));
     }

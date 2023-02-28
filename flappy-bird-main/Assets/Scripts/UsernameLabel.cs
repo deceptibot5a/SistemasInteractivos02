@@ -4,13 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UsernameLabel : MonoBehaviour
 {
-    [SerializeField] private Text _label;
+    [SerializeField] private TMP_Text _label;
 
     private void Reset() {
-        _label = GetComponent<Text>();
+        _label = GetComponent<TMP_Text>();
     }
 
     void Start() {
