@@ -7,11 +7,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class LogInButton : MonoBehaviour
-{
-    [SerializeField] private Button _loginButton;
-    [SerializeField] private TMP_InputField _emailInputField;
-    [SerializeField] private TMP_InputField _emailPasswordField;
+public class LogInButton : MonoBehaviour {
+
+    [SerializeField]
+    private Button _loginButton;
+    [SerializeField]
+    private TMP_InputField _emailInputField;
+    [SerializeField]
+    private TMP_InputField _emailPasswordField;
 
     private Coroutine _loginCoroutine;
 
@@ -20,7 +23,6 @@ public class LogInButton : MonoBehaviour
         _emailInputField = GameObject.Find("InputEmail").GetComponent<TMP_InputField>();
         _emailPasswordField = GameObject.Find("InputPassword").GetComponent<TMP_InputField>();
     }
-
     void Start() {
         _loginButton.onClick.AddListener(HandleLoginButtonClicked);
     }
@@ -43,6 +45,8 @@ public class LogInButton : MonoBehaviour
             Debug.Log($"Login succeeded with {loginTask.Result}");
             SceneManager.LoadScene("GameScene");
         }
+
         _loginCoroutine = null;
     }
+
 }

@@ -1,3 +1,5 @@
+using Firebase.Auth;
+using Firebase.Database;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,19 +9,16 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverCanvas;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         Time.timeScale = 1;
     }
 
-    public void GameOver()
-    {
+    public void GameOver() {
         gameOverCanvas.SetActive(true);
+        Score.WriteNewScore();
         Time.timeScale = 0;
     }
-    public void Replay()
-    {
+    public void Replay() {
         SceneManager.LoadScene(0);
     }
 }

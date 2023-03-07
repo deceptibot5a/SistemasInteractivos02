@@ -1,4 +1,5 @@
 using Firebase.Auth;
+using Firebase.Database;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,9 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SignUpButton : MonoBehaviour
-{
-    [SerializeField] private Button _signUpButton;
+public class SignUpButton : MonoBehaviour {
+    [SerializeField]
+    private Button _signUpButton;
     private Coroutine _signUpCoroutine;
 
     private void Reset() {
@@ -37,7 +38,19 @@ public class SignUpButton : MonoBehaviour
             Debug.LogWarning($"Failed to register task {registarTask.Exception}");
         } else {
             Debug.Log($"Succesfully registered user {registarTask.Result.Email}");
+
+            UserData data = new UserData();
+
+            data.username = GameObject.Find("InputUsername").GetComponent<TMP_InputField>().text;
+            string json = JsonUtility.ToJson(data);
+
+            FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(registarTask.Result.UserId).SetRawJsonValueAsync(json);
             //Registrar los datos adicionale del usaurio en Database
         }
     }
+}
+
+public class UserData {
+    public int score;
+    public string username;
 }
