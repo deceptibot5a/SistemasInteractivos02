@@ -1,4 +1,6 @@
 using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +16,16 @@ public class LoadSceneWhenUserAuthenticated : MonoBehaviour
     }
 
     private void HandleAuthStateChange(object sender, EventArgs e) {
-        if (FirebaseAuth.DefaultInstance.CurrentUser != null) {
+        var currentUser = FirebaseAuth.DefaultInstance.CurrentUser;
+        if (currentUser != null) {
+            FirebaseDatabase.DefaultInstance.GetReference("users/" + currentUser.UserId + "/username").GetValueAsync().ContinueWithOnMainThread(task => {
+                if (task.IsFaulted) {
+                    return;
+                } else if (task.IsCompleted) {
+                    string username = (string)task.Result.Value;
+                    FirebaseDatabase.DefaultInstance.RootReference.Child("users-online").Child(currentUser.UserId).SetValueAsync(username);
+                }
+            });
             SceneManager.LoadScene(_sceneToLoad);
         }
     }

@@ -46,6 +46,7 @@ public class SignUpButton : MonoBehaviour {
 
             FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(registarTask.Result.UserId).SetRawJsonValueAsync(json);
             //Registrar los datos adicionale del usaurio en Database
+            //id, como child el amigo
         }
     }
 }
