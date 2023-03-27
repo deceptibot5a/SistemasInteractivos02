@@ -44,7 +44,7 @@ public class LogInButton : MonoBehaviour {
             Debug.LogWarning($"Login Failed with {loginTask.Exception}");
         } else {
             Debug.Log($"Login succeeded with {loginTask.Result}");
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("Friends");
         }
 
         _loginCoroutine = null;

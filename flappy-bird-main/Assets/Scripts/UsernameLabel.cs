@@ -30,6 +30,7 @@ public class UsernameLabel : MonoBehaviour {
                 string name = currentUser.DisplayName;
                 string email = currentUser.Email;
                 Debug.Log("Email:" + email);
+
             }
         }
     }
