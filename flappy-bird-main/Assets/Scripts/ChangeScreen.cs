@@ -11,4 +11,7 @@ public class ChangeScreen : MonoBehaviour
     public void LoadUsersOnline() {
         SceneManager.LoadScene("UsersOnline");
     }
+    public void LoadChat() {
+        SceneManager.LoadScene("Chat");
+    }
 }

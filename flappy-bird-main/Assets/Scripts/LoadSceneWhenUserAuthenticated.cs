@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneWhenUserAuthenticated : MonoBehaviour
 {
-    [SerializeField] private string _sceneToLoad = "GameScene";
+    [SerializeField] private string _sceneToLoad = "Friends";
 
     void Start() {
         FirebaseAuth.DefaultInstance.StateChanged += HandleAuthStateChange;
