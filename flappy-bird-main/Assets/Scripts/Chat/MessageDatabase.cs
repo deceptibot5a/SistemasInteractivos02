@@ -3,9 +3,9 @@ using Firebase;
 using UnityEngine;
 using System;
 
-public class MessageDatabase : MonoBehaviour
-{
+public class MessageDatabase : MonoBehaviour {
     private DatabaseReference reference;
+    private EventHandler<ChildChangedEventArgs> messageListener;
 
     private void Awake() {
         reference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -26,7 +26,12 @@ public class MessageDatabase : MonoBehaviour
             if (args.DatabaseError != null) fallback(new AggregateException(new Exception(args.DatabaseError.Message)));
             else callback(StringSerialization.Deserialize(typeof(Message), args.Snapshot.GetRawJsonValue()) as Message);
         }
-        reference.Child("messages").ChildAdded += CurrentListener;
-    }
 
+        messageListener = CurrentListener;
+
+        reference.Child("messages").ChildAdded += messageListener;
+    }
+    public void StopListeningMessages(Action<Message> callback) {
+        reference.Child("messages").ChildAdded -= messageListener;
+    }
 }

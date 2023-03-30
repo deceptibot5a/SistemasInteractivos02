@@ -7,7 +7,8 @@ public class ChatHandler : MonoBehaviour
 {
     public MessageDatabase database;
 
-    public TMP_InputField senderIF;
+    public TMP_Text senderIF;
+    //public TMP_InputField senderIF;
     public TMP_InputField textIF;
 
 
