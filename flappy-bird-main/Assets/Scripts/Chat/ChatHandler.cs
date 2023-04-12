@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Extensions;
 
 public class ChatHandler : MonoBehaviour
 {
+    List<GameObject> existingMessages = new List<GameObject>();
     public MessageDatabase database;
 
     public TMP_Text senderIF;
@@ -26,7 +30,16 @@ public class ChatHandler : MonoBehaviour
         var newMessage = Instantiate(messagePrefab, transform.position, Quaternion.identity);
         newMessage.transform.SetParent(messageContainer, false);
         newMessage.GetComponent<TextMeshProUGUI>().text =  $"{message.sender}: {message.text}";
+        existingMessages.Add(newMessage);
+        MessageRefresh();
     }
+
+    private void MessageRefresh() {
+        if (existingMessages.Count > 18) {
+            Destroy(existingMessages[0]);
+            existingMessages.RemoveAt(0);
+        }
+    }   
 }
 
 
